@@ -10,11 +10,13 @@ import RegionDropdown from '../../components/RegionDropdown/RegionDropdown';
 function ArticleCreate() {
     const history = useHistory();
     const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState({firstName: '', lastName: ''});
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
 
     const handleSave = async () => {
-        const payload = { title, content, regions };
+        const payload = { title, author, content, regions };
+        debugger
         await createArticle(payload);
         history.push(ROUTE_ARTICLE_LIST);
     };
@@ -31,6 +33,14 @@ function ArticleCreate() {
                         value={ title }
                         onChange={ (event) => setTitle(event.target.value) }
                     />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Author - First Name</Form.Label>
+                    <Form.Control type="text" placeholder="First Name" value={author.firstName} id="firstName" onChange={ (event) => setAuthor({...author, [event.target.id]: event.target.value}) }/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Author - Last Name</Form.Label>
+                    <Form.Control type="text" placeholder="Last Name" value={author.lastName} id="lastName" onChange={ (event) => setAuthor({...author, [event.target.id]: event.target.value}) }/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Content</Form.Label>
