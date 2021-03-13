@@ -1,24 +1,38 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import { ROUTE_AUTHOR_LIST } from "../../constants";
-import { createAuthor } from "../../services/authors";
+import { getAuthor, editAuthor } from "../../services/authors";
 
-function AuthorCreate() {
+function AuthorEdit(props) {
   const history = useHistory();
-  const [author, setAuthor] = useState({ firstName: "", lastName: "" });
+  const { authorId } = useParams();
+  const [author, setAuthor] = useState({
+    firstName: "",
+    lastName: "",
+  });
+
+  useEffect(() => {
+    const fetchAuthor = async () => {
+      const data = await getAuthor(authorId);
+      const { firstName, lastName } = data;
+      setAuthor({ firstName, lastName });
+    };
+
+    fetchAuthor();
+  }, [authorId]);
 
   const handleSave = async () => {
     const payload = author;
-    await createAuthor(payload);
+    await editAuthor(authorId, payload);
     history.push(ROUTE_AUTHOR_LIST);
   };
 
   return (
-    <div className="ArticleCreate">
-      <h1>Create Author</h1>
+    <div className="ArticleEdit">
+      <h1>Edit Author</h1>
       <Form>
         <Form.Group>
           <Form.Label>First Name</Form.Label>
@@ -52,4 +66,4 @@ function AuthorCreate() {
   );
 }
 
-export default AuthorCreate;
+export default AuthorEdit;
