@@ -6,11 +6,12 @@ import {
     ROUTE_HOME,
     ROUTE_ARTICLE_LIST,
     ROUTE_ARTICLE_CREATE,
-    ROUTE_ARTICLE_EDIT
+    ROUTE_ARTICLE_EDIT, ROUTE_AUTHOR_LIST
 } from '../../constants';
 import ArticleList from '../../pages/ArticleList/ArticleList';
 import ArticleCreate from '../../pages/ArticleCreate/ArticleCreate';
 import ArticleEdit from '../../pages/ArticleEdit/ArticleEdit';
+import AuthorList from '../../pages/AuthorList/AuthorList';
 
 function MainContent() {
     return (
@@ -19,6 +20,9 @@ function MainContent() {
                 <Switch>
                     <Route path={ ROUTE_ARTICLE_LIST }>
                         <ArticleList />
+                    </Route>
+                    <Route path={ ROUTE_AUTHOR_LIST }>
+                        <AuthorList />
                     </Route>
                     <Route path={ ROUTE_ARTICLE_CREATE }>
                         <ArticleCreate />
