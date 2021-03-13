@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 
-import { ROUTE_AUTHOR_PREFIX, ROUTE_ARTICLE_CREATE } from '../../constants';
+import { ROUTE_AUTHOR_PREFIX, ROUTE_AUTHOR_CREATE } from '../../constants';
 
 import {listAuthors} from '../../services/authors'
 
@@ -33,7 +33,7 @@ function AuthorList() {
     return (
         <div className="ArticleList">
             <h1>Authors</h1>
-            <Link className="d-block mb-3" to={ ROUTE_ARTICLE_CREATE }>
+            <Link className="d-block mb-3" to={ ROUTE_AUTHOR_CREATE }>
                 Create a new Author
             </Link>
             <Table striped bordered hover>

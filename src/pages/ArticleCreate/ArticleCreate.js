@@ -16,7 +16,6 @@ function ArticleCreate() {
 
     const handleSave = async () => {
         const payload = { title, author, content, regions };
-        debugger
         await createArticle(payload);
         history.push(ROUTE_ARTICLE_LIST);
     };

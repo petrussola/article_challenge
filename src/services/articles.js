@@ -12,7 +12,6 @@ export const getArticle = async (articleId) => {
 
 export const createArticle = async (payload) => {
     const response = await api.post('articles', payload);
-    debugger
     return response.data;
 };
 
