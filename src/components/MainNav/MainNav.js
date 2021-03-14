@@ -9,11 +9,11 @@ function MainNav() {
     return (
         <div className="MainNav">
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand as={ Link } to={ ROUTE_HOME }>Overloop Tech Test</Navbar.Brand>
-                <Nav className="mr-auto">
+                <Navbar.Brand as={ Link } to={ ROUTE_HOME } className="mr-auto">Overloop Tech Test</Navbar.Brand>
+                <Nav>
                     <Nav.Link as= { Link } to={ ROUTE_ARTICLE_LIST }>Articles</Nav.Link>
                 </Nav>
-                <Nav className="mr-auto">
+                <Nav>
                     <Nav.Link as= { Link } to={ ROUTE_AUTHOR_LIST }>Authors</Nav.Link>
                 </Nav>
             </Navbar>
