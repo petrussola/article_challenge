@@ -3,13 +3,12 @@ import DropdownList from "react-widgets/lib/DropdownList";
 
 import { listAuthors } from "../../services/authors";
 
-function AuthorDropdown({ value, onChange }) {
+function AuthorDropdown({ value, onChange, onClick }) {
   const [authors, setAuthors] = useState([]);
 
   useEffect(() => {
     const fetchAuthors = async () => {
       const data = await listAuthors();
-      debugger;
       setAuthors(data);
     };
 
@@ -30,6 +29,9 @@ function AuthorDropdown({ value, onChange }) {
         onChange={onChange}
         allowCreate={false}
       />
+      <button onClick={onClick} value="remove author">
+        Remove Author
+      </button>
     </div>
   );
 }

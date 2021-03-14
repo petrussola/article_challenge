@@ -39,6 +39,10 @@ function ArticleCreate() {
           <AuthorDropdown
             value={author}
             onChange={(selectedInput) => setAuthor(selectedInput)}
+            onClick={(e) => {
+              e.preventDefault();
+              setAuthor(null);
+            }}
           />
         </Form.Group>
         <Form.Group>

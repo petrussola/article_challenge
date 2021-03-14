@@ -30,7 +30,6 @@ function ArticleEdit(props) {
 
   const handleSave = async () => {
     const payload = { title, author, content, regions };
-    debugger;
     await editArticle(articleId, payload);
     history.push(ROUTE_ARTICLE_LIST);
   };
@@ -53,6 +52,10 @@ function ArticleEdit(props) {
           <AuthorDropdown
             value={author}
             onChange={(selectedInput) => setAuthor(selectedInput)}
+            onClick={(e) => {
+              e.preventDefault();
+              setAuthor(null);
+            }}
           />
         </Form.Group>
         <Form.Group>
