@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DropdownList from "react-widgets/lib/DropdownList";
+import Button from "react-bootstrap/Button";
 
 import { listAuthors } from "../../services/authors";
 
@@ -29,9 +30,9 @@ function AuthorDropdown({ value, onChange, onClick }) {
         onChange={onChange}
         allowCreate={false}
       />
-      <button onClick={onClick} value="remove author">
+      <Button variant="outline-danger" onClick={onClick} value="remove author" className="mt-2">
         Remove Author
-      </button>
+      </Button>
     </div>
   );
 }
