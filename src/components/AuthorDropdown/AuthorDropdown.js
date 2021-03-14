@@ -9,6 +9,7 @@ function AuthorDropdown({ value, onChange }) {
   useEffect(() => {
     const fetchAuthors = async () => {
       const data = await listAuthors();
+      debugger;
       setAuthors(data);
     };
 
@@ -20,7 +21,11 @@ function AuthorDropdown({ value, onChange }) {
       <DropdownList
         value={value}
         data={authors}
-        textField="lastName"
+        textField={(author) =>
+          author && authors.length > 0
+            ? `${author.firstName} ${author.lastName}`
+            : null
+        }
         valueField="id"
         onChange={onChange}
         allowCreate={false}
